@@ -7,15 +7,18 @@ import {
   TextInput,
   Pressable,
   SafeAreaView,
+  ScrollView
 } from "react-native";
 
 
 export default function App() {
   return (
     <>
+    <ScrollView contentContainerStyle={estilos.contentContainer}>
+  
       <SafeAreaView style={estilos.safeContainer}>
 
-
+      
         <Text style={estilos.tituloExercicio}>
           App 1 - Fotos de lugares visitados
         </Text>
@@ -41,11 +44,15 @@ export default function App() {
 
 
       </SafeAreaView>
+      </ScrollView>
     </>
   );
 }
 
 const estilos = StyleSheet.create({
+  contentContainer: {
+    paddingVertical: 1
+  },
   safeContainer: {
     flex: 1,
     backgroundColor: "#f4f4f4",
