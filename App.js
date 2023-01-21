@@ -1,5 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import { cloneElement } from "react";
+import {  useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,13 +6,33 @@ import {
   TextInput,
   Pressable,
   SafeAreaView,
-  ScrollView
+  ScrollView,
+  Alert,
+
 } from "react-native";
+import * as ImagePicker from "expo-image-picker";
 
 
-export default function App() {
+export default function ImagePickerExample(){
+  const [foto, setFoto] = useState(); // Recupera a foto que vc vai bater com a câmera
+  
+  const acessarCamera = async () => {
+    const imagem = await ImagePicker.launchCameraAsync({
+      allowsEditing: true,
+      aspect: [16, 9],
+      quality: 0.5,
+    });
+
+    console.log(imagem);
+
+    setFoto(imagem.assets[0].uri)
+
+  }
+
+
   return (
     <>
+    
     <ScrollView contentContainerStyle={estilos.contentContainer}>
   
       <SafeAreaView style={estilos.safeContainer}>
@@ -32,20 +51,39 @@ export default function App() {
 
         <View style={estilos.foto}></View>
 
-        <Pressable style={estilos.botaoFoto}>
+
+
+        <Pressable style={({pressed}) => [
+          {
+            backgroundColor: pressed ? 'gray' : '#f4f4f4',
+          },
+          estilos.botaoFoto
+        ]}
+           onPress={() => {acessarCamera}}
+        >
           <Text style={estilos.textoBotaoFoto}>Tirar Foto</Text>
         </Pressable>
 
         <View style={estilos.mapa}></View>
 
         
-        <Pressable style={estilos.botaoLocalizar} >
+        <Pressable style={({pressed}) => [
+          {
+            backgroundColor: pressed ? 'gray' : '#f4f4f4',
+          },
+          estilos.botaoLocalizar,
+        ]} 
+        >
           <Text style={estilos.textoLocalizar}>Localizar no mapa</Text>
         </Pressable>
 
+        {foto && (
+          <Image source={{ uri: foto }} style={{ width: 300, height: 200 }} />
+        )}
 
       </SafeAreaView>
       </ScrollView>
+      
     </>
   );
 }
