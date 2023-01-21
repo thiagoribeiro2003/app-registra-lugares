@@ -38,7 +38,8 @@ export default function App() {
 
         <View style={estilos.mapa}></View>
 
-        <Pressable style={estilos.botaoLocalizar}>
+        
+        <Pressable style={estilos.botaoLocalizar} >
           <Text style={estilos.textoLocalizar}>Localizar no mapa</Text>
         </Pressable>
 
