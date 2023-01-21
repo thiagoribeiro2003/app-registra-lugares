@@ -59,7 +59,7 @@ export default function ImagePickerExample(){
           },
           estilos.botaoFoto
         ]}
-           onPress={() => {acessarCamera}}
+           onPress={acessarCamera}
         >
           <Text style={estilos.textoBotaoFoto}>Tirar Foto</Text>
         </Pressable>
