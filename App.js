@@ -12,18 +12,22 @@ export default function App() {
   return (
     <>
       <SafeAreaView style={estilos.safeContainer}>
+
         <Text style={estilos.tituloExercicio}>
           App 1 - Fotos de lugares visitados
         </Text>
 
         <View style={estilos.containerNomeLocal}>
           <TextInput
-            style={estilos.nomeLocal}
+            style={estilos.campoLocal}
             placeholder="Titulo da foto/local"
           />
         </View>
 
         <View style={estilos.foto}></View>
+
+        <Pressable><Text>oi</Text></Pressable>
+        
       </SafeAreaView>
     </>
   );
@@ -39,7 +43,7 @@ const estilos = StyleSheet.create({
     textAlign: "center",
     marginTop: 50,
   },
-  nomeLocal: {
+  campoLocal: {
     borderWidth: 1,
     fontSize: 16,
     marginTop: 20,
@@ -50,9 +54,15 @@ const estilos = StyleSheet.create({
   containerNomeLocal: {
     alignItems: "center",
   },
-  mapa: {
+  foto: {
+    marginTop: 30,
+    width: "90%",
+    height: 200,
     backgroundColor: "#f0f",
-    height: 20,
-    width: 20,
+    justifyContent: "center",
+    marginLeft: 20 
   },
+
+
+  
 });
