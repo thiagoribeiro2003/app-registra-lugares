@@ -7,11 +7,11 @@ import {
   Pressable,
   SafeAreaView,
   ScrollView,
-  Alert,
   Image
 
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import MapView from "react-native-maps";
 
 
 export default function ImagePickerExample(){
@@ -74,7 +74,9 @@ export default function ImagePickerExample(){
 
         
 
-        <View style={estilos.mapa}></View>
+        <View style={estilos.mapa}>
+    
+        </View>
 
         
         <Pressable style={({pressed}) => [
@@ -114,7 +116,7 @@ const estilos = StyleSheet.create({
     marginTop: 25,
     height: 54,
     width: "90%",
-    textAlign: "left", // Deixa o placheholder centralizado
+    textAlign: "center", // Deixa o placheholder centralizado
   },
   containerNomeLocal: {
     alignItems: "center",
@@ -123,7 +125,7 @@ const estilos = StyleSheet.create({
     marginTop: 20,
     width: "90%",
     height: 200,
-    backgroundColor: "#f0f",
+    backgroundColor: "lightblue",
     justifyContent: "center",
     marginLeft: 20 
   },
@@ -143,7 +145,7 @@ const estilos = StyleSheet.create({
     marginTop: 50,
     width: "90%",
     height: 200,
-    backgroundColor: "#f0f",
+    backgroundColor: "lightblue",
     justifyContent: "center",
     marginLeft: 20 
   },
