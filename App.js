@@ -11,10 +11,51 @@ import {
 
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
-import MapView from "react-native-maps";
+import * as Location from "expo-location";
+import MapView, { Marker } from "react-native-maps"
 
 
 export default function ImagePickerExample(){
+
+  const [minhaLocalizacao, setMinhaLocalizacao] = useState(null);
+
+  useEffect(() => {
+    async function obterLocalizacao(){
+
+    /* Acessandp o status da requisição de permissão de uso */
+    const { status } = Location.requestForegroundPermissionsAsync();
+
+    /* Acessando os dados de geolocalização */
+    let localizacaoAtual = await Location.getCurrentPositionAsync({})
+
+    /* Adicionando os dados ao state */
+    setMinhaLocalizacao(localizacaoAtual);
+
+  }
+  obterLocalizacao();
+  }, []);
+
+  console.log(minhaLocalizacao);
+
+  const regiaoInicial = {
+     // Estado de SP
+     latitude: -23.533773,
+     longitude: -46.65529,
+     latitudeDelta: 10,
+     longitudeDelta: 10,
+  }
+
+  /* Usando state para controlar a localização */
+  const [localizacaoClicada, setLocalizacaoClicada] = useState();
+
+  
+
+  
+
+
+
+
+
   const [foto, setFoto] = useState(); // Recupera a foto que vc vai bater com a câmera
   
   const acessarCamera = async () => {
@@ -66,10 +107,7 @@ export default function ImagePickerExample(){
         ]}
            onPress={acessarCamera}
         >
-
-        
-
-          <Text style={estilos.textoBotaoFoto}>Tirar Foto</Text>
+        <Text style={estilos.textoBotaoFoto}>Tirar Foto</Text>
         </Pressable>
 
         
