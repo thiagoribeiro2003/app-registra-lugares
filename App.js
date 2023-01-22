@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   ScrollView,
   Alert,
+  Image
 
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
@@ -49,9 +50,13 @@ export default function ImagePickerExample(){
           />
         </View>
 
-        <View style={estilos.foto}></View>
+        <View style={estilos.foto}>
+        { foto && (
+          <Image source={{ uri: foto}} style={{width: 371, height: 200}}/>
+        )}
+        </View>
 
-
+        
 
         <Pressable style={({pressed}) => [
           {
@@ -61,8 +66,13 @@ export default function ImagePickerExample(){
         ]}
            onPress={acessarCamera}
         >
+
+        
+
           <Text style={estilos.textoBotaoFoto}>Tirar Foto</Text>
         </Pressable>
+
+        
 
         <View style={estilos.mapa}></View>
 
@@ -77,9 +87,6 @@ export default function ImagePickerExample(){
           <Text style={estilos.textoLocalizar}>Localizar no mapa</Text>
         </Pressable>
 
-        {foto && (
-          <Image source={{ uri: foto }} style={{ width: 300, height: 200 }} />
-        )}
 
       </SafeAreaView>
       </ScrollView>
