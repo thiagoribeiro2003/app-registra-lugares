@@ -107,7 +107,7 @@ const estilos = StyleSheet.create({
     marginTop: 25,
     height: 54,
     width: "90%",
-    textAlign: "center", // Deixa o placheholder centralizado
+    textAlign: "left", // Deixa o placheholder centralizado
   },
   containerNomeLocal: {
     alignItems: "center",
