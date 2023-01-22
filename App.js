@@ -48,6 +48,17 @@ export default function ImagePickerExample(){
   /* Usando state para controlar a localização */
   const [localizacaoClicada, setLocalizacaoClicada] = useState();
 
+  const marcarLocal = (event) => {
+    setLocalizacaoClicada({
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+      latitude: minhaLocalizacao.coords.latitude,
+      longitude: minhaLocalizacao.coords.longitude,
+    });
+  };
+
+  
+
   
 
   
@@ -113,7 +124,23 @@ export default function ImagePickerExample(){
         
 
         <View style={estilos.mapa}>
-    
+        <MapView
+          style={{width: 371, height: 200}}
+           
+            region={localizacaoClicada ?? regiaoInicial}
+            liteMode={false}
+            mapType="standard"
+            userInterfaceStyle="dark"
+            onPress={marcarLocal}
+          >
+            {localizacaoClicada && (
+            <Marker 
+                coordinate={localizacaoClicada}
+                title="Aqui!!!"
+                onPress={(e) => console.log(e.nativeEvent)}
+            />
+            )}
+            </MapView>
         </View>
 
         
@@ -123,6 +150,7 @@ export default function ImagePickerExample(){
           },
           estilos.botaoLocalizar,
         ]} 
+        onPress={marcarLocal}
         >
           <Text style={estilos.textoLocalizar}>Localizar no mapa</Text>
         </Pressable>
