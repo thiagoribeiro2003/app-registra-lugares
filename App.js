@@ -133,13 +133,13 @@ export default function ImagePickerExample(){
             userInterfaceStyle="dark"
             onPress={marcarLocal}
           >
-            {localizacaoClicada && (
+            {localizacaoClicada && 
             <Marker 
                 coordinate={localizacaoClicada}
                 title="Aqui!!!"
-                onPress={(e) => console.log(e.nativeEvent)}
+                onPress={ e => console.log(e.nativeEvent)}
             />
-            )}
+            }
             </MapView>
         </View>
 
