@@ -16,13 +16,7 @@ import MapView, { Marker } from "react-native-maps";
 export default function ImagePickerExample() {
   /* ===================================== MAPA E LOCALIZAÇÃO =========================================== */
 
-  const [minhaLocalizacao, setMinhaLocalizacao] = useState({
-    // Estado de SP
-    latitude: -23.533773,
-    longitude: -46.65529,
-    latitudeDelta: 10,
-    longitudeDelta: 10,
-  });
+  const [minhaLocalizacao, setMinhaLocalizacao] = useState(null);
 
   useEffect(() => {
     async function obterLocalizacao() {
@@ -132,17 +126,19 @@ export default function ImagePickerExample() {
             </MapView>
           </View>
 
-          <Pressable
-            style={({ pressed }) => [
-              {
-                backgroundColor: pressed ? "gray" : "#f4f4f4",
-              },
-              estilos.botaoLocalizar,
-            ]}
-            onPress={marcarLocal}
-          >
-            <Text style={estilos.textoLocalizar}>Localizar no mapa</Text>
-          </Pressable>
+          {minhaLocalizacao && (
+            <Pressable
+              style={({ pressed }) => [
+                {
+                  backgroundColor: pressed ? "gray" : "#f4f4f4",
+                },
+                estilos.botaoLocalizar,
+              ]}
+              onPress={marcarLocal}
+            >
+              <Text style={estilos.textoLocalizar}>Salvar localização</Text>
+            </Pressable>
+          )}
         </SafeAreaView>
       </ScrollView>
     </>
