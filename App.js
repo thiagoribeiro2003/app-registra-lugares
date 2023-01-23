@@ -23,7 +23,7 @@ export default function ImagePickerExample(){
     async function obterLocalizacao(){
 
     /* Acessandp o status da requisição de permissão de uso */
-    const { status } = Location.requestForegroundPermissionsAsync();
+    const { status } = await Location.requestForegroundPermissionsAsync();
 
     /* Acessando os dados de geolocalização */
     let localizacaoAtual = await Location.getCurrentPositionAsync({})
@@ -32,6 +32,7 @@ export default function ImagePickerExample(){
     setMinhaLocalizacao(localizacaoAtual);
 
   }
+
   obterLocalizacao();
   }, []);
 
@@ -53,7 +54,7 @@ export default function ImagePickerExample(){
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
       latitude: minhaLocalizacao.coords.latitude,
-      longitude: minhaLocalizacao.coords.longitude,
+      longitude: minhaLocalizacao.coords.longitude
     });
   };
 
