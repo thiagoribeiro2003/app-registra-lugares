@@ -16,7 +16,13 @@ import MapView, { Marker } from "react-native-maps";
 export default function ImagePickerExample() {
   /* ===================================== MAPA E LOCALIZAÇÃO =========================================== */
 
-  const [minhaLocalizacao, setMinhaLocalizacao] = useState(null);
+  const [minhaLocalizacao, setMinhaLocalizacao] = useState({
+    // Estado de SP
+    latitude: -23.533773,
+    longitude: -46.65529,
+    latitudeDelta: 10,
+    longitudeDelta: 10,
+  });
 
   useEffect(() => {
     async function obterLocalizacao() {
