@@ -17,6 +17,9 @@ import MapView, { Marker } from "react-native-maps"
 
 export default function ImagePickerExample(){
 
+  
+/* ===================================== MAPA E LOCALIZAÇÃO =========================================== */
+
   const [minhaLocalizacao, setMinhaLocalizacao] = useState(null);
 
   useEffect(() => {
@@ -60,13 +63,7 @@ export default function ImagePickerExample(){
 
   
 
-  
-
-  
-
-
-
-
+/* ===================================== FOTO =========================================== */
 
   const [foto, setFoto] = useState(); // Recupera a foto que vc vai bater com a câmera
   
